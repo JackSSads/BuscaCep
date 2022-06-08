@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PFDM202201.MainPage"
+             BackgroundImageSource="bg.png">
+    
+    <StackLayout Padding="10, 30, 10, 10">
+        <Image Source="logo" Margin="0"/>
+        
+        <Label Text="Login" TextColor="#FFF" FontAttributes="Bold" FontSize="60" 
+               HorizontalTextAlignment="Center" Margin="0,10,0,40"/>
+        
+        <Entry x:Name="etUser" Text="jackson" TextColor="#FFF" Keyboard="Email" 
+               Placeholder="Usuário" PlaceholderColor="#FFF" FontSize="20" 
+               FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+        
+        <Entry x:Name="etPass" Text="123456" Placeholder="Senha" PlaceholderColor="#FFF" 
+               TextColor="#FFF" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" 
+               IsPassword="True" Margin="0, 0, 0, 40"/>
+        
+        <Button x:Name="btmLogin" Text="Entrar" TextColor="#FFF" FontAttributes="Bold" 
+                FontSize="20" BackgroundColor="#1f8be1" BorderWidth="1" BorderRadius="99" 
+                Margin="30, 0, 30, 0" Clicked="btnLogin_Clicked"/>
+        
+        <Line X1="100000" Y1="0" X2="0" Y2="20" Stroke="#a1a1a1" StrokeDashArray="1"/>
+        
+        <Button x:Name="btnCadastrar" Text="Não tem uma conta? Clique aqui" TextColor="#a1a1a1" 
+                BackgroundColor="#464646" BorderWidth="1" BorderRadius="99" Margin="30, 0, 30, 0" 
+                Clicked="btnCadastrar_Clicked"/>
+        
+    </StackLayout>
+</ContentPage>

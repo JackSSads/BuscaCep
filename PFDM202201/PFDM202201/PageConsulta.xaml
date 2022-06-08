@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PFDM202201.PageConsulta"
+             BackgroundImageSource="bg.png">
+    <ContentPage.Content>
+        <StackLayout Padding="10, 40, 10, 10">
+            <Image Source="logo" Margin="0, 0, 0, 20"/>
+            <Entry x:Name="entCep" Keyboard="Numeric" MaxLength="8" TextColor="#464646" HorizontalTextAlignment="Center" 
+                   Placeholder="Digite seu cep" PlaceholderColor="#FFF"/>
+            <Button x:Name="btnBuscaCep" TextColor="#FFF" Text="Buscar" BorderWidth="1" BorderRadius="99" 
+                    Margin="30" BackgroundColor="#1f8be1" Clicked="btnBuscaCep_Clicked"/>
+            <Label Text="Bairro" TextColor="#FFF" HorizontalTextAlignment="Center" TextDecorations="Underline"/>
+            <Label x:Name="lblBairro" TextColor="#FFF" HorizontalTextAlignment="Center"/>
+            <Label Text="Cidade" TextColor="#FFF" HorizontalTextAlignment="Center" TextDecorations="Underline"/>
+            <Label x:Name="lblCidade" TextColor="#FFF" HorizontalTextAlignment="Center"/>
+            <Label Text="UF" TextColor="#FFF" HorizontalTextAlignment="Center" TextDecorations="Underline"/>
+            <Label x:Name="lblUf" TextColor="#FFF" HorizontalTextAlignment="Center"/>
+            <Label Text="Distrito" TextColor="#FFF" HorizontalTextAlignment="Center" TextDecorations="Underline"/>
+            <Label x:Name="lblDistrito" TextColor="#FFF" HorizontalTextAlignment="Center"/>
+            <Label Text="Todos os direitos reservados" TextColor="#a1a1a1" HorizontalTextAlignment="Center" Margin="20"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,8 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
-namespace ValidaCep
+namespace PFDM202201
 {
     public partial class App : Application
     {
@@ -10,8 +8,9 @@ namespace ValidaCep
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
-        }
+            MainPage = new NavigationPage(new MainPage()); // Instanciando a navegação não hierárquica 
+        }                                                  // passando como página inicial a MainPage
+        
 
         protected override void OnStart()
         {

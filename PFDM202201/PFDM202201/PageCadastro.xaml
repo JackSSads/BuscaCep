@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PFDM202201.PageCadastro"
+             BackgroundImageSource="bg.png">
+    <ContentPage.Content>
+        <StackLayout Padding="10, 30, 10, 10">
+            
+            <Image Source="logo" Margin="0"/>
+            
+            <Label Text="Cadastrar Usuário" TextColor="#FFF" FontAttributes="Bold" FontSize="40" 
+                   HorizontalTextAlignment="Center" Margin="0, 30, 0, 50"/>
+
+            <Entry x:Name="etUser" Placeholder="Digite um e-mail"
+                PlaceholderColor="#a1a1a1" TextColor="#FFF" FontSize="20" FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center" Margin="0, 0, 0, 20"/>
+            
+            <Entry x:Name="etPass" Placeholder="Digite sua senha" PlaceholderColor="#a1a1a1" TextColor="#FFF" 
+                   FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" IsPassword="True"/>
+            
+            <Entry x:Name="etConfPass" Placeholder="Confirme sua senha" PlaceholderColor="#a1a1a1"
+                TextColor="#FFF" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" IsPassword="True"/>
+            
+            <Button x:Name="btnCadastrar" Text="Cadastrar" TextColor="#FFF" FontAttributes="Bold" FontSize="20"
+                BackgroundColor="#1f8be1" BorderWidth="1" BorderRadius="99" Margin="30, 40, 30, 0" Clicked="btnCadastrar_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

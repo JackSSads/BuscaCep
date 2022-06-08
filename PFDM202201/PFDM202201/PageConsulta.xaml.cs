@@ -1,24 +1,17 @@
 ﻿using System;
-using Xamarin.Forms;
 using Correios.NET;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace ValidaCep
+namespace PFDM202201
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PageConsulta : ContentPage
     {
-        public MainPage()
+        public PageConsulta()
         {
             InitializeComponent();
         }
-
-        private void btnLimpar_Clicked(object sender, EventArgs e)
-        {
-            lblBairro.Text = "";
-            lblCidade.Text = "";
-            lblUf.Text = "";
-            lblDdd.Text = "";
-        }
-
         private void btnBuscaCep_Clicked(object sender, EventArgs e)
         {
             var cep = entCep.Text;
@@ -28,8 +21,9 @@ namespace ValidaCep
         {
             try
             {
-                var endereco = await new CorreiosService().GetAddressesAsync(cep);
-                foreach (var item in endereco)
+                var endereco = await new CorreiosService().GetAddressesAsync(cep);  // Chamada da API no método assincrono de retorno dos dados
+                                                                                    // passando como parâmetro uma string contendo no máximo 8 digitos
+                foreach (var item in endereco)  // retornando os dados para o front-end
                 {
                     lblBairro.Text = item.Street;
                     lblCidade.Text = item.City;
