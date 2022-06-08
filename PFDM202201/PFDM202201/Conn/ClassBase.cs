@@ -16,8 +16,6 @@ namespace PFDM202201.Conn
         private DataTable dt;
         private NpgsqlDataReader dr;
 
-
-
         public bool vericicador = false;    // Variável resposta 
         public string err = "";             // Variável para armazenar erro caso a verificação falhe
 

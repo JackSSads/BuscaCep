@@ -1,8 +1,5 @@
-﻿using PFDM202201.Conn;
+﻿using PFDM202201.Models;
 using System;
-using System.Net;
-using System.Net.Mail;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -15,70 +12,48 @@ namespace PFDM202201
             InitializeComponent();
         }
 
-        ClassBase classBase = new ClassBase();  // Instância da classe ClassBase
-        public string user;
-        public string pass;
-        public bool vericicador;
-        public string err = "";
-        private bool GetData(string us_email, string us_pass)
+        private int erroLogin = 0;
+        public string Email = "jackson";
+        public string Senha = "123";
+
+        private async void btnLogin_Clicked(object sender, EventArgs e)
         {
-            try
+
+            
+
+            if (Email != null && Senha != null)
             {
-                classBase.Verifica(us_email, us_pass);
-            }
-            catch (Exception ex)
-            {
-                DisplayAlert("Erro", $"{ex.Message}", "Tente novamente");
-            }
-            if (!classBase.err.Equals(""))
-            {
-                this.err = classBase.err;
-            }
-            return vericicador;
-        }
-        private async Task emailErroAsync()
-        {
-            if (etUser.Text != null && etPass.Text != pass)
-            {
-                try
+
+                if (etUser.Text == Email && etPass.Text == Senha)
                 {
-                    string to = "fotosjackson2018@hotmail.com"; // Para onde vai ser enviado
-                    string from = "contatoJacksonSouza@hotmail.com"; // Quem vai enviar 
 
-                    MailMessage mail = new MailMessage(from, to); // Instanciando e passando o REMETENTE e o DESTINATÁRIO, respectivamente
 
-                    mail.Subject = "Tentativas de senha incorreta"; // Titulo do e-maail
+                    etUser.Text = "";
+                    etPass.Text = "";
 
-                    mail.IsBodyHtml = true; // Ativação do corpo em HTML
-                    mail.Body = $"APP CEP<br/>Usuário:{user}<br/>Mensagem: Senha incorreta!</p>"; // Mensagem do e-mail
+                    await Navigation.PushAsync(new PageConsulta());
 
-                    mail.BodyEncoding = Encoding.GetEncoding("UTF-8"); // Configuração do body HTML em UTF-8 
-                    mail.SubjectEncoding = Encoding.GetEncoding("UTF-8"); // Configuração do titulo em UTF-8
 
-                    SmtpClient client = new SmtpClient("smtp.office365.com", 587); // Conecção com o servidor (Microsoft)
-
-                    client.UseDefaultCredentials = false; // Desativação do uso das credenciais Default
-                    client.Credentials = new NetworkCredential("contatoJacksonSouza@hotmail.com", "Evolution2011*!@#$%"); // Credenciais
-
-                    client.EnableSsl = true; // Criptografia SSL
-
-                    client.Send(mail); // Envio do e-mail
-
-                    await DisplayAlert("Erro", "Senha incorreta", "Tente novamente");
                 }
-                catch (Exception ex)
+                else
                 {
-                    await DisplayAlert("Erro", $"{ex.Message}", "Tente novamente");
-                }
-            }
-        }
-        private void btnLogin_Clicked(object sender, EventArgs e)
-        {
-            user = etUser.Text;
-            pass = etPass.Text;
+                    erroLogin = +1;
 
-            GetData(user, pass);
-            _ = emailErroAsync();
+                    if (erroLogin >= 3)
+                    {
+                        await DisplayAlert("Erro", "Você digitou uma senha incorreta por três vezes", "Tente Novamenter");
+                        erroLogin = 0;
+                    }
+
+                    await DisplayAlert("Dados inválidos", "E-mail ou senha incorreto", "Tente novamente");
+                }
+
+            }
+            else
+            {
+                await DisplayAlert("Preencha os campos!", "Preencha os campos com e-amil e senha", "Tente novamente");
+            }
+
         }
         private async void btnCadastrar_Clicked(object sender, EventArgs e)
         {

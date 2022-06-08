@@ -4,12 +4,12 @@
              x:Class="PFDM202201.PageConsulta"
              BackgroundImageSource="bg.png">
     <ContentPage.Content>
-        <StackLayout Padding="10, 40, 10, 10">
+        <StackLayout Padding="10, 10, 10, 10">
             <Image Source="logo" Margin="0, 0, 0, 20"/>
             <Entry x:Name="entCep" Keyboard="Numeric" MaxLength="8" TextColor="#464646" HorizontalTextAlignment="Center" 
                    Placeholder="Digite seu cep" PlaceholderColor="#FFF"/>
             <Button x:Name="btnBuscaCep" TextColor="#FFF" Text="Buscar" BorderWidth="1" BorderRadius="99" 
-                    Margin="30" BackgroundColor="#1f8be1" Clicked="btnBuscaCep_Clicked"/>
+                    Margin="30, 0, 30, 0" BackgroundColor="#1f8be1" Clicked="btnBuscaCep_Clicked"/>
             <Label Text="Bairro" TextColor="#FFF" HorizontalTextAlignment="Center" TextDecorations="Underline"/>
             <Label x:Name="lblBairro" TextColor="#FFF" HorizontalTextAlignment="Center"/>
             <Label Text="Cidade" TextColor="#FFF" HorizontalTextAlignment="Center" TextDecorations="Underline"/>

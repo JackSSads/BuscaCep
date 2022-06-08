@@ -1,4 +1,5 @@
 ﻿using PFDM202201.Conn;
+using PFDM202201.Models;
 using System;
 using System.Net;
 using System.Net.Mail;
@@ -17,15 +18,18 @@ namespace PFDM202201
         }
 
         ClassBase classBase = new ClassBase();  // Instância da classe ClassBase
-        string user;
-        string pass;
-        string confPass;
+        public string name;
+        public string user;
+        public string pass;
+        public string confPass;
 
         private async void Insert() // Método para inserssão
         {
+            name = etName.Text;
             user = etUser.Text;
             pass = etPass.Text;
             confPass = etConfPass.Text;
+
             DateTime date = DateTime.Now; // instância do DateTime
 
             if (user != null && pass == confPass)
@@ -44,7 +48,7 @@ namespace PFDM202201
                         mail.Subject = "APP CEP - Cadastro realizado com sucesso"; // Titulo do e-maail
 
                         mail.IsBodyHtml = true; // Ativação do corpo em HTML
-                        mail.Body = $"APP CEP<br/>Usuário: {user}<br/>Obrigado por se cadastrar no Api Cep</p>"; // Mensagem do e-mail
+                        mail.Body = $"APP CEP<br/>Olá {name}! Obrigado por fazer seu cadastro no APP CEP<br/>Seu usuário é <span>{user}</span><br/><br/>Api Cep</p>"; // Mensagem do e-mail
 
                         mail.BodyEncoding = Encoding.GetEncoding("UTF-8"); // Configuração do body HTML em UTF-8 
                         mail.SubjectEncoding = Encoding.GetEncoding("UTF-8"); // Configuração do titulo em UTF-8
@@ -78,6 +82,7 @@ namespace PFDM202201
             {
                 await DisplayAlert("Senha incorreta", "Confirme sua senha para finalizar o cadastro", "Tente novamente");
             }
+
         }
         private void btnCadastrar_Clicked(object sender, EventArgs e)
         {
