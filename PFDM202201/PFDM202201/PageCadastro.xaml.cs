@@ -47,19 +47,19 @@ namespace PFDM202201
                         {   
                             // Disparo de e-mail
 
-                            string from = "apicep@outlook.com"; // Quem vai enviar 
+                            string from = "email@example.com"; // Quem vai enviar 
                             string to = user; // Para onde vai ser enviado
 
                             // Instanciando e passando o REMETENTE e o DESTINATÁRIO, respectivamente
                             MailMessage mail = new MailMessage(from, to);
 
                             // Titulo do e-mail
-                            mail.Subject = "APP CEP - Cadastro realizado com sucesso";
+                            mail.Subject = "CEP - Cadastro realizado com sucesso";
                             // Ativação do corpo em HTML
                             mail.IsBodyHtml = true;
                             // Mensagem do e-mail
-                            mail.Body = $"APP CEP<br/>Olá {name}! Obrigado por fazer seu cadastro no APP CEP<br/>" +
-                                $"Seu usuário é <span>{user}</span><br/><br/>Api Cep</p>";
+                            mail.Body = $"CEP<br/>Olá {name}! Obrigado por fazer seu cadastro no CEP<br/>" +
+                                $"Seu usuário é <span>{user}</span><br/><br/>Cep</p>";
 
                             // Configuração do body HTML em UTF-8 
                             mail.BodyEncoding = Encoding.GetEncoding("UTF-8");
@@ -72,7 +72,7 @@ namespace PFDM202201
                             // Desativação do uso das credenciais Default
                             client.UseDefaultCredentials = false;
                             // Credenciais
-                            client.Credentials = new NetworkCredential("apicep@outlook.com", "senhadaconta12345");
+                            client.Credentials = new NetworkCredential("email@example.com", "senhadaconta");
 
                             // Criptografia SSL
                             client.EnableSsl = true;
