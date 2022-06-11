@@ -34,7 +34,14 @@ namespace PFDM202201
                     etUser.Text = "";
                     etPass.Text = "";
 
-                    await Navigation.PushAsync(new PageConsulta());
+                    if (Email == "admin" && Senha == "admin123")
+                    {
+                        await Navigation.PushAsync(new PageAdmin());
+                    }
+                    else
+                    {
+                        await Navigation.PushAsync(new PageConsulta());
+                    }
 
 
                 }

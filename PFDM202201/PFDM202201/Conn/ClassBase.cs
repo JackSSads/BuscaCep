@@ -84,6 +84,12 @@ namespace PFDM202201.Conn
             }
             return data;
         }
+
+        //public string[] AdminUser()
+        //{
+
+
+        //}
     }
 }
 

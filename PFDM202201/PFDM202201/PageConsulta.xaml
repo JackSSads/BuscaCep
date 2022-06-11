@@ -11,6 +11,8 @@
                    Placeholder="Digite seu cep" PlaceholderColor="#FFF"/>
             <Button x:Name="btnBuscaCep" TextColor="#FFF" Text="Buscar" BorderWidth="1" BorderRadius="99" 
                     Margin="35" BackgroundColor="#1f8be1" Clicked="btnBuscaCep_Clicked"/>
+
+            <StackLayout Orientation="Horizontal">
             <Label Text="Bairro" TextColor="#FFF" HorizontalTextAlignment="Center" 
                    TextDecorations="Underline"/>
             <Label x:Name="lblBairro" TextColor="#FFF" HorizontalTextAlignment="Center"/>
@@ -25,6 +27,7 @@
             <Label x:Name="lblDistrito" TextColor="#FFF" HorizontalTextAlignment="Center"/>
             <Label Text="Todos os direitos reservados" TextColor="#a1a1a1" 
                    HorizontalTextAlignment="Center" Margin="20"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

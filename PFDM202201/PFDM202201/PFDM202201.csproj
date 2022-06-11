@@ -18,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="PageAdmin.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="PageCadastro.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

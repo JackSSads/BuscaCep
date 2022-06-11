@@ -12,9 +12,6 @@ namespace PFDM202201
         public PageConsulta()
         {
             InitializeComponent();
-
-            ClassBase classBase = new ClassBase();
-
         }
         private void btnBuscaCep_Clicked(object sender, EventArgs e)
         {

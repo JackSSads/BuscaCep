@@ -16,7 +16,8 @@ namespace PFDM202201
             InitializeComponent();
         }
 
-        ClassBase classBase = new ClassBase();  // Instância da classe ClassBase
+        // Instância da classe ClassBase
+        ClassBase classBase = new ClassBase();
         public string name;
         public string user;
         public string pass;
@@ -29,48 +30,73 @@ namespace PFDM202201
             pass = etPass.Text;
             confPass = etConfPass.Text;
 
-            DateTime date = DateTime.Now; // instância do DateTime
+            // instância do DateTime
+            DateTime date = DateTime.Now; 
 
-            if (user != null && pass == confPass)
+            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(user) && 
+                !string.IsNullOrEmpty(pass) && !string.IsNullOrEmpty(confPass))
             {
-                try
+                if (pass == confPass && pass.Length >= 8)
                 {
-                    classBase.Insert(name, user, pass, date); // Chamada do método Insert passando usuário, senha e data de inserssão
-
                     try
                     {
-                        string from = "apicep@outlook.com"; // Quem vai enviar 
-                        string to = user; // Para onde vai ser enviado
+                        // Chamada do método Insert passando nome, email, senha e data de inserssão
+                        classBase.Insert(name, user, pass, date);
 
-                        MailMessage mail = new MailMessage(from, to); // Instanciando e passando o REMETENTE e o DESTINATÁRIO, respectivamente
+                        try
+                        {   
+                            // Disparo de e-mail
 
-                        mail.Subject = "APP CEP - Cadastro realizado com sucesso"; // Titulo do e-maail
+                            string from = "apicep@outlook.com"; // Quem vai enviar 
+                            string to = user; // Para onde vai ser enviado
 
-                        mail.IsBodyHtml = true; // Ativação do corpo em HTML
-                        mail.Body = $"APP CEP<br/>Olá {name}! Obrigado por fazer seu cadastro no APP CEP<br/>Seu usuário é <span>{user}</span><br/><br/>Api Cep</p>"; // Mensagem do e-mail
+                            // Instanciando e passando o REMETENTE e o DESTINATÁRIO, respectivamente
+                            MailMessage mail = new MailMessage(from, to);
 
-                        mail.BodyEncoding = Encoding.GetEncoding("UTF-8"); // Configuração do body HTML em UTF-8 
-                        mail.SubjectEncoding = Encoding.GetEncoding("UTF-8"); // Configuração do titulo em UTF-8
+                            // Titulo do e-mail
+                            mail.Subject = "APP CEP - Cadastro realizado com sucesso";
+                            // Ativação do corpo em HTML
+                            mail.IsBodyHtml = true;
+                            // Mensagem do e-mail
+                            mail.Body = $"APP CEP<br/>Olá {name}! Obrigado por fazer seu cadastro no APP CEP<br/>" +
+                                $"Seu usuário é <span>{user}</span><br/><br/>Api Cep</p>";
 
-                        SmtpClient client = new SmtpClient("smtp.office365.com", 587); // Conecção com o servidor (Microsoft)
+                            // Configuração do body HTML em UTF-8 
+                            mail.BodyEncoding = Encoding.GetEncoding("UTF-8");
+                            // Configuração do titulo em UTF-8
+                            mail.SubjectEncoding = Encoding.GetEncoding("UTF-8");
 
-                        client.UseDefaultCredentials = false; // Desativação do uso das credenciais Default
-                        client.Credentials = new NetworkCredential("apicep@outlook.com", "senhadaconta12345"); // Credenciais
+                            // Conecxão com o servidor (Microsoft)
+                            SmtpClient client = new SmtpClient("smtp.office365.com", 587);
 
-                        client.EnableSsl = true; // Criptografia SSL
+                            // Desativação do uso das credenciais Default
+                            client.UseDefaultCredentials = false;
+                            // Credenciais
+                            client.Credentials = new NetworkCredential("apicep@outlook.com", "senhadaconta12345");
 
-                        client.Send(mail); // Envio do e-mail
+                            // Criptografia SSL
+                            client.EnableSsl = true;
+
+                            // Envio do e-mail1
+                            client.Send(mail);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+
+                        await DisplayAlert("Sucesso", "Cadastro Realizado com Sucesso", "OK");
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
                     }
-
-                    await DisplayAlert("Sucesso", "Cadastro Realizado com Sucesso", "OK");
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine(ex.Message);
+                    await DisplayAlert("Senhas inválidas",
+                        "Digite uma senha com no mínimo 8 caracteres e tente novamente",
+                        "Tente novamente");
                 }
 
                 etName.Text = "";
@@ -80,7 +106,9 @@ namespace PFDM202201
             }
             else
             {
-                await DisplayAlert("Senha incorreta", "Confirme sua senha para finalizar o cadastro", "Tente novamente");
+                await DisplayAlert("Campo vazio",
+                    "Preencha todos os campos corretamente",
+                    "Tente novamente");
             }
 
         }
