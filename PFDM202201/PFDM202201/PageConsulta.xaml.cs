@@ -1,5 +1,6 @@
 ﻿using System;
 using Correios.NET;
+using PFDM202201.Conn;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,6 +12,9 @@ namespace PFDM202201
         public PageConsulta()
         {
             InitializeComponent();
+
+            ClassBase classBase = new ClassBase();
+
         }
         private void btnBuscaCep_Clicked(object sender, EventArgs e)
         {

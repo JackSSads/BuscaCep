@@ -10,7 +10,6 @@ namespace PFDM202201
 
             MainPage = new NavigationPage(new MainPage()); // Instanciando a navegação não hierárquica 
         }                                                  // passando como página inicial a MainPage
-        
 
         protected override void OnStart()
         {

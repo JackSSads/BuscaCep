@@ -1,6 +1,5 @@
-﻿using PFDM202201.Models;
+﻿using PFDM202201.Conn;
 using System;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace PFDM202201
@@ -12,17 +11,21 @@ namespace PFDM202201
             InitializeComponent();
         }
 
-        private int erroLogin = 0;
-        public string Email = "jackson";
-        public string Senha = "123";
+        ClassBase classBase = new ClassBase();
 
         private async void btnLogin_Clicked(object sender, EventArgs e)
         {
 
-            
-
-            if (Email != null && Senha != null)
+            if (etUser.Text != null && etPass.Text != null && etPass.Text.Length >= 8)
             {
+
+
+                string[] data = classBase.Verifica(etUser.Text, etPass.Text);
+
+                string Email = data[0];
+                string Senha = data[1];
+
+
 
                 if (etUser.Text == Email && etPass.Text == Senha)
                 {
@@ -37,21 +40,17 @@ namespace PFDM202201
                 }
                 else
                 {
-                    erroLogin = +1;
-
-                    if (erroLogin >= 3)
-                    {
-                        await DisplayAlert("Erro", "Você digitou uma senha incorreta por três vezes", "Tente Novamenter");
-                        erroLogin = 0;
-                    }
-
-                    await DisplayAlert("Dados inválidos", "E-mail ou senha incorreto", "Tente novamente");
+                    await DisplayAlert("Dados inválidos!",
+                   "Usuário ou senha inválidos, confirme os dados e tente novamente",
+                   "Tente novamente");
                 }
 
             }
             else
             {
-                await DisplayAlert("Preencha os campos!", "Preencha os campos com e-amil e senha", "Tente novamente");
+                await DisplayAlert("Dados inválidos",
+                        "Preencha os campos com um e-mail e uma senha contendo no mínimo 8 dígitos",
+                        "Tente novamente");
             }
 
         }

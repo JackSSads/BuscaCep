@@ -1,5 +1,4 @@
 ﻿using PFDM202201.Conn;
-using PFDM202201.Models;
 using System;
 using System.Net;
 using System.Net.Mail;
@@ -36,7 +35,7 @@ namespace PFDM202201
             {
                 try
                 {
-                    classBase.Insert(user, pass, date); // Chamada do método Insert passando usuário, senha e data de inserssão
+                    classBase.Insert(name, user, pass, date); // Chamada do método Insert passando usuário, senha e data de inserssão
 
                     try
                     {
@@ -74,6 +73,7 @@ namespace PFDM202201
                     Console.WriteLine(ex.Message);
                 }
 
+                etName.Text = "";
                 etUser.Text = "";
                 etPass.Text = "";
                 etConfPass.Text = "";

@@ -4,28 +4,28 @@
              x:Class="PFDM202201.MainPage"
              BackgroundImageSource="bg.png">
     
-    <StackLayout Padding="10, 10, 10, 10">
-        <Image Source="logo" Margin="0"/>
+    <StackLayout Padding="10">
+        <Image Source="logo"/>
         
         <Label Text="Login" TextColor="#FFF" FontAttributes="Bold" FontSize="60" 
                HorizontalTextAlignment="Center" Margin="0, 10, 0, 0"/>
         
         <Entry x:Name="etUser" TextColor="#FFF" Keyboard="Email" 
                Placeholder="Usuário" PlaceholderColor="#FFF" FontSize="20" 
-               FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0, 0, 0, 0"/>
+               FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0, 20, 0, 0"/>
         
         <Entry x:Name="etPass" Placeholder="Senha" PlaceholderColor="#FFF" 
                TextColor="#FFF" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" 
-               IsPassword="True" Margin="0, 0, 0, 30"/>
+               IsPassword="True" Margin="0, 20, 0, 30"/>
         
         <Button x:Name="btmLogin" Text="Entrar" TextColor="#FFF" FontAttributes="Bold" 
                 FontSize="20" BackgroundColor="#1f8be1" BorderWidth="1" BorderRadius="99" 
-                Margin="30, 0, 30, 0" Clicked="btnLogin_Clicked"/>
+                Margin="30, 20, 30, 0" Clicked="btnLogin_Clicked"/>
         
         <Line X1="100000" Y1="0" X2="0" Y2="20" Stroke="#a1a1a1" StrokeDashArray="1"/>
         
         <Button x:Name="btnCadastrar" Text="Não tem uma conta? Clique aqui" TextColor="#a1a1a1" 
-                BackgroundColor="#464646" BorderWidth="1" BorderRadius="99" Margin="30, 0, 30, 0" 
+                BackgroundColor="#464646" BorderWidth="1" BorderRadius="99" Margin="30, 25, 30, 0" 
                 Clicked="btnCadastrar_Clicked"/>
         
     </StackLayout>

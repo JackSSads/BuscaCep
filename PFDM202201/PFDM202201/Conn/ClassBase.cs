@@ -19,15 +19,15 @@ namespace PFDM202201.Conn
         public bool vericicador = false;    // Variável resposta 
         public string err = "";             // Variável para armazenar erro caso a verificação falhe
 
-        public void Insert(string us_email, string us_pass, DateTime us_criationdate)
+        public void Insert(string us_name, string us_email, string us_pass, DateTime us_criationdate)
         {
             conn = new NpgsqlConnection(conection.Connstring()); // Criando conecxão com o banco de dados
             try
             {
                 conn.Open();    // Abrindo conecxão
                 
-                sql = $"select * from tb_insert('{us_email}'," +
-                    $" '{us_pass}', '{us_criationdate}');";     // String de inserção de dados no banco
+                sql = $"INSERT INTO tb_usuario_login(us_name, us_email, us_pass, us_date)" +
+                    $" VALUES ('{us_name}', '{us_email}', '{us_pass}', '{us_criationdate}')"; // String de inserção de dados no banco
 
                 cmd = new NpgsqlCommand(sql, conn); // comando de execução. Requer uma string SQL
                                                     // e a conecxão com o banco
@@ -46,31 +46,35 @@ namespace PFDM202201.Conn
         {
             await navigationPage.PushAsync(new PageConsulta()); // Redirecionando para a página de consulta (PageConsulta)
         }
-        public bool Verifica(string us_email, string us_pass)
+        public string[] Verifica(string us_email, string us_pass)
         {
-            conn = new NpgsqlConnection(conection.Connstring()); 
-
+            string[] data = { "Erro", "Erro" };
             try
             {
+                conn = new NpgsqlConnection(conection.Connstring()); 
                 conn.Open();
 
                 sql = $"SELECT us_email, us_pass FROM tb_usuario_login WHERE us_email = '{us_email}' AND us_pass = '{us_pass}';";
 
                 cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.Clear();
 
-                dt = new DataTable();
+                cmd.CommandType = CommandType.Text;
 
-                dt.Load(cmd.ExecuteReader());
-
+                // recebe o conteúdo que vem do banco
                 dr = cmd.ExecuteReader();
 
-                if (dr.HasRows)
-                {
-                    vericicador = true;
-                    Redirect();
-                }
+                // lendo os dados das tabelas
+                dr.Read();
+
+                string email = dr.GetString(0);
+                string senha = dr.GetString(1);
+
+                string[] result = { email, senha };
 
                 conn.Close();
+
+                return result;
             }
             catch (Exception ex)
             {
@@ -78,7 +82,12 @@ namespace PFDM202201.Conn
                 Console.WriteLine("Erro de comunicação no banco de dados! = " + ex.Message);
                 this.err = "Erro de comunicação no banco de dados!";
             }
-            return vericicador;
+            return data;
         }
     }
 }
+
+
+
+
+

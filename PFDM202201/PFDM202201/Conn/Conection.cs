@@ -5,11 +5,11 @@
         /// <summary>
         /// Parâmetros para fazer a conecção com o banco de dados 
         /// </summary>
-        private static string host = "ec2-44-196-174-238.compute-1.amazonaws.com";
+        private static string host = "host";
         private static string port = "5432";
-        private static string user = "ffgfgeaaqdunme";
-        private static string database = "dbi2unknbqgvf9";
-        private static string password = "9bba8a08904cfc299acbef7ac294272c740c57d94760463b713d3440b01fcfd5";
+        private static string user = "root";
+        private static string database = "banco_de_dados";
+        private static string password = "";
 
         public string Connstring()  // Retorno da istring de conecxão
         {
