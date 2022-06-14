@@ -25,7 +25,7 @@ namespace PFDM202201.Conn
             try
             {
                 conn.Open();    // Abrindo conecxão
-                
+
                 sql = $"INSERT INTO tb_usuario_login(us_name, us_email, us_pass, us_date)" +
                     $" VALUES ('{us_name}', '{us_email}', '{us_pass}', '{us_criationdate}')"; // String de inserção de dados no banco
 
@@ -38,7 +38,7 @@ namespace PFDM202201.Conn
             }
             catch (Exception ex)
             {
-                conn.Close(); 
+                conn.Close();
                 Console.WriteLine(ex.Message); // Retorno do erro
             }
         }
@@ -51,7 +51,7 @@ namespace PFDM202201.Conn
             string[] data = { "Erro", "Erro" };
             try
             {
-                conn = new NpgsqlConnection(conection.Connstring()); 
+                conn = new NpgsqlConnection(conection.Connstring());
                 conn.Open();
 
                 sql = $"SELECT us_email, us_pass FROM tb_usuario_login WHERE us_email = '{us_email}' AND us_pass = '{us_pass}';";
@@ -85,13 +85,90 @@ namespace PFDM202201.Conn
             return data;
         }
 
-        //public string[] AdminUser()
-        //{
+        public string[] GetAllUsers(string us_email)
+        {
+            string[] err = { "0" };
+
+            try
+            {
+                conn = new NpgsqlConnection(conection.Connstring());
+                conn.Open();
+
+                sql = $"SELECT us_id, us_name, us_email, us_pass, us_date FROM tb_usuario_login WHERE us_email = '{us_email}';";
+
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.Clear();
+
+                cmd.CommandType = CommandType.Text;
+
+                // recebe o conteúdo que vem do banco
+                dr = cmd.ExecuteReader();
+
+                // lendo os dados das tabelas
+                
+                try
+                {
+                    dr.Read();
+                
+                    string id = dr.GetInt32(0).ToString();
+                    string nome = dr.GetString(1);
+                    string email = dr.GetString(2);
+                    string senha = dr.GetString(3);
+                    string data = dr.GetDateTime(4).ToString();
+
+                    string[] result = { id, nome, email, senha, data };
+
+                    conn.Close();
+
+                    return result;
+
+                }
+                catch
+                {
+                    conn.Close();
+
+                    return err;
+                }
 
 
-        //}
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                Console.WriteLine("Erro de comunicação no banco de dados! = " + ex.Message);
+                this.err = "Erro de comunicação no banco de dados!";
+                return err;
+            }
+        }
+
+        public string DeleteUser(string us_id)
+        {
+            try
+            {
+                conn = new NpgsqlConnection(conection.Connstring());
+                conn.Open();    // Abrindo conecxão
+
+                sql = $"DELETE FROM tb_usuario_login WHERE us_id = {us_id};";
+
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.Clear();
+
+                dr = cmd.ExecuteReader();
+
+                conn.Close();
+
+                return "Secesso";
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+
+                return "Erro!: " + ex.Message;
+            }
+        }
     }
 }
+
 
 
 
