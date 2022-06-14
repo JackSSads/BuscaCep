@@ -16,8 +16,9 @@ namespace PFDM202201
         private async void btnLogin_Clicked(object sender, EventArgs e)
         {
 
-            if (etUser.Text != null && etPass.Text != null && etPass.Text.Length >= 8)
+            if (!string.IsNullOrEmpty(etUser.Text) && !string.IsNullOrEmpty(etPass.Text) && etPass.Text.Length >= 8)
             {
+
 
 
                 string[] data = classBase.Verifica(etUser.Text, etPass.Text);
