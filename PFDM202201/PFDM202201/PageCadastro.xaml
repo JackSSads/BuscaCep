@@ -9,26 +9,26 @@
             <Image Source="logo"/>
             
             <Label Text="Cadastrar Usuário" TextColor="#FFF" FontAttributes="Bold" FontSize="40" 
-                   HorizontalTextAlignment="Center" Margin="0, 20, 0, 30"/>
+                   HorizontalTextAlignment="Center" Margin="0, 10, 0, 10"/>
 
             <Entry x:Name="etName" Placeholder="Digite seu nome"
                 PlaceholderColor="#fff" TextColor="#FFF" FontSize="20" FontAttributes="Bold" 
-                   HorizontalTextAlignment="Center" Margin="0, 0, 0, 0"/>
+                   HorizontalTextAlignment="Center" Margin="0"/>
 
             <Entry x:Name="etUser" Placeholder="Digite um e-mail"
                 PlaceholderColor="#b8b8b8" TextColor="#FFF" FontSize="20" FontAttributes="Bold" 
-                   HorizontalTextAlignment="Center" Margin="0, 0, 0, 0"/>
+                   HorizontalTextAlignment="Center" Margin="0"/>
             
             <Entry x:Name="etPass" Placeholder="Digite sua senha" PlaceholderColor="#a1a1a1" TextColor="#FFF" 
                    FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" 
-                   Margin="0, 0, 0, 0" IsPassword="True"/>
+                   Margin="0" IsPassword="True"/>
             
             <Entry x:Name="etConfPass" Placeholder="Confirme sua senha" PlaceholderColor="#a1a1a1"
                 TextColor="#FFF" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" 
-                   Margin="0, 0, 0, 0" IsPassword="True"/>
+                   Margin="0" IsPassword="True"/>
             
             <Button x:Name="btnCadastrar" Text="Cadastrar" TextColor="#FFF" FontAttributes="Bold" FontSize="20"
-                BackgroundColor="#1f8be1" BorderWidth="1" BorderRadius="99" Margin="30, 45, 30, 0" Clicked="btnCadastrar_Clicked"/>
+                BackgroundColor="#1f8be1" BorderWidth="1" BorderRadius="99" Margin="30, 10, 30, 0" Clicked="btnCadastrar_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -5,29 +5,31 @@
              BackgroundImageSource="bg.png">
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <Image Source="logo" Margin="0, 0, 0, 20"/>
+            <Image Source="logo" Margin="0, 0, 0, 0"/>
             <Entry x:Name="entCep" Keyboard="Numeric" MaxLength="8" TextColor="#464646" 
                    HorizontalTextAlignment="Center" 
                    Placeholder="Digite seu cep" PlaceholderColor="#FFF"/>
             <Button x:Name="btnBuscaCep" TextColor="#FFF" Text="Buscar" BorderWidth="1" BorderRadius="99" 
-                    Margin="35" BackgroundColor="#1f8be1" Clicked="btnBuscaCep_Clicked"/>
+                    Margin="30, 5, 30, 10" BackgroundColor="#1f8be1" Clicked="btnBuscaCep_Clicked"/>
 
-            <StackLayout Orientation="Horizontal">
-            <Label Text="Bairro" TextColor="#FFF" HorizontalTextAlignment="Center" 
+            <Label Text="Bairro:" TextColor="#FFF" FontAttributes="Bold" HorizontalTextAlignment="Center" 
                    TextDecorations="Underline"/>
             <Label x:Name="lblBairro" TextColor="#FFF" HorizontalTextAlignment="Center"/>
-            <Label Text="Cidade" TextColor="#FFF" HorizontalTextAlignment="Center" 
+
+            <Label Text="Cidade" TextColor="#FFF" FontAttributes="Bold" HorizontalTextAlignment="Center" 
                    TextDecorations="Underline"/>
             <Label x:Name="lblCidade" TextColor="#FFF" HorizontalTextAlignment="Center"/>
-            <Label Text="UF" TextColor="#FFF" HorizontalTextAlignment="Center" 
+
+            <Label Text="UF" TextColor="#FFF" FontAttributes="Bold" HorizontalTextAlignment="Center" 
                    TextDecorations="Underline"/>
             <Label x:Name="lblUf" TextColor="#FFF" HorizontalTextAlignment="Center"/>
-            <Label Text="Distrito" TextColor="#FFF" HorizontalTextAlignment="Center" 
+
+            <Label Text="Distrito" TextColor="#FFF" FontAttributes="Bold" HorizontalTextAlignment="Center" 
                    TextDecorations="Underline"/>
             <Label x:Name="lblDistrito" TextColor="#FFF" HorizontalTextAlignment="Center"/>
-            <Label Text="Todos os direitos reservados" TextColor="#a1a1a1" 
-                   HorizontalTextAlignment="Center" Margin="20"/>
-            </StackLayout>
+            
+            <Label Text="Todos os direitos reservados" TextColor="#a1a1a1"
+                HorizontalTextAlignment="Center" Margin="20"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
